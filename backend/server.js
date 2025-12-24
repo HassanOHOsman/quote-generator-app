@@ -1,4 +1,7 @@
 import express from "express";
+import cors from "cors";
+
+app.use(cors());
 
 const app = express();
 const port = 3000;
@@ -60,3 +63,5 @@ app.post("/", (req, res) => {
 app.listen(port, () => {
   console.error(`Quote server listening on port ${port}`);
 });
+
+
