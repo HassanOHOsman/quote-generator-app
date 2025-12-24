@@ -5,7 +5,8 @@ const port = 3000;
 
 const quotes = [
   {
-    quote: "Either write something worth reading or do something worth writing.",
+    quote:
+      "Either write something worth reading or do something worth writing.",
     author: "Benjamin Franklin",
   },
   {
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   const bodyBytes = [];
-  req.on("data", chunk => bodyBytes.push(...chunk));
+  req.on("data", (chunk) => bodyBytes.push(...chunk));
   req.on("end", () => {
     const bodyString = String.fromCharCode(...bodyBytes);
     let body;
@@ -38,8 +39,14 @@ app.post("/", (req, res) => {
       return;
     }
     if (typeof body != "object" || !("quote" in body) || !("author" in body)) {
-      console.error(`Failed to extract quote and author from post body: ${bodyString}`);
-      res.status(400).send("Expected body to be a JSON object containing keys quote and author.");
+      console.error(
+        `Failed to extract quote and author from post body: ${bodyString}`
+      );
+      res
+        .status(400)
+        .send(
+          "Expected body to be a JSON object containing keys quote and author."
+        );
       return;
     }
     quotes.push({
