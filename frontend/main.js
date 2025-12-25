@@ -5,7 +5,7 @@ async function displayQuote() {
   const newQuote = await response.json();
 
   document.getElementById("quote").textContent = `"${newQuote.quote}"`;
-  document.getElementById("author").textContent = `— ${newQuote.author};
+  document.getElementById("author").textContent = `— ${newQuote.author}`;
 
   lastQuote = newQuote;
 
