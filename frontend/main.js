@@ -1,7 +1,7 @@
 let lastQuote = null;
 
 async function displayQuote() {
-  const response = await fetch("https://github.com/HassanOHOsman/quote-generator-app/tree/main/backend");
+  const response = await fetch("https://hassanohosman-quote-generator-backend.hosting.codeyourfuture.io");
   const text = await response.text();
 
   const [quotePart, authorPart] = text.split(" -");
