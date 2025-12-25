@@ -1,19 +1,14 @@
 let lastQuote = null;
 
-function displayQuote() {
-  let newQuote;
-  
-  do {
-    newQuote = pickFromArray(quotes);
-  } while (lastQuote && 
-    newQuote.quote === lastQuote.quote &&
-    newQuote.author === lastQuote.author
-    );
-  
-  document.getElementById("quote").textContent = `"${newQuote.quote}"`;
-  document.getElementById("author").textContent = `— ${newQuote.author}`;
+async function displayQuote() {
+  const response = await fetch("https://github.com/HassanOHOsman/quote-generator-app/tree/main/backend");
+  const text = await response.text();
 
-  lastQuote = newQuote;
+  const [quotePart, authorPart] = text.split(" -");
+
+  document.getElementById("quote").textContent = quotePart;
+  document.getElementById("author").textContent = `— ${authorPart}`;
+
 }
 
 window.addEventListener("DOMContentLoaded", () => {
