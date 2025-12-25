@@ -2,12 +2,12 @@ let lastQuote = null;
 
 async function displayQuote() {
   const response = await fetch("https://hassanohosman-quote-generator-backend.hosting.codeyourfuture.io");
-  const text = await response.text();
+  const newQuote = await response.json();
 
   const [quotePart, authorPart] = text.split(" -");
 
-  document.getElementById("quote").textContent = quotePart;
-  document.getElementById("author").textContent = `— ${authorPart}`;
+  document.getElementById("quote").textContent = `"${newQuote.quote}"`;
+  document.getElementById("author").textContent = `— ${newQuote.author};
 
 }
 
